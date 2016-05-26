@@ -12,4 +12,10 @@ public interface Data {
 	 * get the name of the provider type (jpa, elastic, mongo, ...)
 	 */
 	String getName();
+	
+	/**
+	 * 
+	 * @return a new session with datasource connection
+	 */
+	Session getSession();
 }
