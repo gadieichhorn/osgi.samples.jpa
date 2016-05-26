@@ -1,0 +1,20 @@
+#
+# OSGI EXAMPLES JPA DATA API
+#
+
+Bundle-Version:1.0.0.${tstamp}
+Bundle-Description: 				\
+	This is OSGI EXAMPLES JPA DATA API project. An API project should in general not contain any \
+	implementation code.\
+	\
+	${warning;Please update this Bundle-Description in osgi.examples.jpa.data.api/bnd.bnd}
+
+	
+Export-Package:  \
+	osgi.examples.jpa.data.api;provide:=true
+
+-buildpath: \
+	osgi.enroute.base.api;version=1.0
+
+-testpath: \
+	osgi.enroute.junit.wrapper;version=4.12
