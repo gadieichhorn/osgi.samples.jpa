@@ -1,0 +1,5 @@
+{
+ "revisionRefs":[{
+  "artifactId":"javax.persistence","baseline":"2.1.2","bsn":"javax.persistence","created":1440748660742,"description":"The Java Persistence API (JPA) : a standard interface-based Java model abstraction of persistence, developed by the JCP.","groupId":"org.datanucleus","md5":"4A84FEC232972499F02A8AC0727B0F3D","name":"JPA API","phase":"MASTER","revision":"AED75BA289871E6A249F9931189500F3572916B8","size":116335,"urls":["http://repo1.maven.org/maven2/org/datanucleus/javax.persistence/2.1.2/javax.persistence-2.1.2.jar"],"version":"2.1.2"
+ }]
+}
