@@ -22,9 +22,6 @@ public class DataTest {
     	return st.waitForService(1000);
     }    
     
-    /*
-     * 
-     */
     @Test
     public void testGetInstance() throws Exception {
     	Assert.assertNotNull(getService(Data.class));

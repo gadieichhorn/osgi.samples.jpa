@@ -15,6 +15,7 @@ import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
 //import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.jpa.EntityManagerFactoryBuilder;
 import org.osgi.service.log.LogService;
@@ -38,8 +39,8 @@ import osgi.examples.jpa.data.provider.impl.SessionJpaImpl;
 )
 public class DataImpl implements  Data, ManagedServiceFactory  {
 
-//    @Reference(cardinality = ReferenceCardinality.OPTIONAL, target = "(osgi.unit.name=data.jpa.factory)")
-//    protected EntityManagerFactoryBuilder emfb;
+    @Reference(cardinality = ReferenceCardinality.OPTIONAL, target = "(osgi.unit.name=data.jpa.factory)")
+    protected EntityManagerFactoryBuilder emfb;
 
     private EntityManagerFactory emf; // injected from OSGi DS
 
