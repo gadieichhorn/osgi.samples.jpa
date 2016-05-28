@@ -7,13 +7,13 @@ import osgi.examples.jpa.data.api.Session;
 public class SessionJpaImpl implements Session {
 	private EntityManager em;
 	
-	public SessionJpaImpl(EntityManager em) {
+	public SessionJpaImpl(final EntityManager em) {
 		this.em = em;
 	}
 
 	@Override
 	public Object get(String key) {
-		// TODO Auto-generated method stub
+		System.out.println(this.em.isOpen());
 		return null;
 	}
 

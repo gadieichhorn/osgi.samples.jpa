@@ -4,11 +4,7 @@
 
 Bundle-Version:1.0.0.${tstamp}
 Bundle-Description: 				\
-	This is OSGI EXAMPLES JPA DATA API project. An API project should in general not contain any \
-	implementation code.\
-	\
-	${warning;Please update this Bundle-Description in osgi.examples.jpa.data.api/bnd.bnd}
-
+	API classes
 	
 Export-Package:  \
 	osgi.examples.jpa.data.api;provide:=true
