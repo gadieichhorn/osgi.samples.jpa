@@ -11,10 +11,17 @@ Private-Package: \
 	osgi.examples.jpa.data.provider,\
 	osgi.examples.jpa.data.provider.impl
 	
+
+Test-Cases: osgi.examples.jpa.data.provider.DataImplTest
+
+Export-Package: osgi.examples.jpa.data.api	
+
 -buildpath: \
 	osgi.enroute.base.api;version=1.0,\
 	osgi.examples.jpa.data.api;version=latest,\
-	javax.persistence
+	javax.persistence,\
+	org.eclipse.persistence.jpa,\
+	org.eclipse.persistence.core
 		
 -testpath: \
 	osgi.enroute.junit.wrapper;version=4.12
@@ -36,4 +43,4 @@ Private-Package: \
 	org.eclipse.equinox.metatype;version='[1.4.100,1.4.101)',\
 	org.osgi.service.metatype;version='[1.3.0,1.3.1)',\
 	osgi.examples.jpa.data.provider;version=snapshot
-Export-Package: osgi.examples.jpa.data.api
+	
