@@ -26,8 +26,14 @@ public class DataTest {
      * 
      */
     @Test
-    public void testData() throws Exception {
+    public void testGetInstance() throws Exception {
     	Assert.assertNotNull(getService(Data.class));
    	}
 
+    @Test
+    public void testDataName() throws Exception {
+    	Data instance = getService(Data.class);
+    	Assert.assertEquals(instance.getName(), "JPA");    	
+   	}
+    
 }
