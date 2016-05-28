@@ -37,8 +37,6 @@ test-cases: 			${classes;NAMED;*Test}
             pretty              =       true ; \
             local               =       ${build}/local
 
-	        
-
 -plugin.9.Release: \
 \
         aQute.bnd.deployer.repository.LocalIndexedRepo; \
