@@ -17,7 +17,8 @@ Private-Package: \
 	osgi.enroute.base.api;version=1.0,\
 	osgi.examples.jpa.data.api;version=latest,\
 	javax.persistence,\
-	osgi.cmpn
+	osgi.cmpn,\
+	slf4j.api
 		
 -testpath: \
 	osgi.enroute.junit.wrapper;version=4.12
@@ -30,10 +31,12 @@ Private-Package: \
 	osgi.identity;filter:='(osgi.identity=osgi.examples.jpa.data.provider)',\
 	osgi.identity;filter:='(osgi.identity=osgi.enroute.webconsole.xray.provider)',\
 	osgi.identity;filter:='(osgi.identity=org.osgi.service.jpa)',\
-	osgi.identity;filter:='(osgi.identity=org.eclipse.persistence.jpa)',\
-	osgi.identity;filter:='(osgi.identity=org.eclipse.persistence.core)'
+	osgi.identity;filter:='(osgi.identity=ch.qos.logback.classic)',\
+	osgi.identity;filter:='(osgi.identity=ch.qos.logback.core)'
 	
 -runbundles: \
+	ch.qos.logback.classic;version='[1.1.7,1.1.8)',\
+	ch.qos.logback.core;version='[1.1.7,1.1.8)',\
 	com.springsource.org.json;version='[1.0.0,1.0.1)',\
 	javax.persistence;version='[2.1.1,2.1.2)',\
 	javax.persistence;version='[2.1.2,2.1.3)',\
@@ -58,11 +61,16 @@ Private-Package: \
 	osgi.enroute.bostock.d3.webresource;version='[3.5.6,3.5.7)',\
 	osgi.enroute.dto.bndlib.provider;version='[1.0.0,1.0.1)',\
 	osgi.enroute.executor.simple.provider;version='[1.0.0,1.0.1)',\
-	osgi.enroute.logger.simple.provider;version='[1.1.1,1.1.2)',\
 	osgi.enroute.web.simple.provider;version='[1.3.3,1.3.4)',\
 	osgi.enroute.webconsole.xray.provider;version='[2.0.0,2.0.1)',\
 	osgi.examples.jpa.data.api;version=snapshot,\
-	osgi.examples.jpa.data.provider;version=snapshot
+	osgi.examples.jpa.data.provider;version=snapshot,\
+	slf4j.api;version='[1.7.20,1.7.21)'
 	
 -runfw: org.eclipse.osgi;version='[3.10.100.v20150529-1857,3.10.100.v20150529-1857]'
+
 -runee: JavaSE-1.8
+
+Test-Cases: osgi.examples.jpa.data.provider.DataImplTest
+
+-resolve: auto

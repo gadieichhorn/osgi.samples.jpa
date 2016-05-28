@@ -1,13 +1,10 @@
 package osgi.examples.jpa.data.provider;
 
-import java.util.Dictionary;
 import java.util.Map;
 
 import javax.persistence.EntityManagerFactory;
 
 import org.osgi.framework.BundleContext;
-import org.osgi.service.cm.ConfigurationException;
-import org.osgi.service.cm.ManagedServiceFactory;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -16,9 +13,10 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
-//import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.jpa.EntityManagerFactoryBuilder;
 import org.osgi.service.log.LogService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import osgi.enroute.debug.api.Debug;
 import osgi.examples.jpa.data.api.Data;
@@ -31,13 +29,16 @@ import osgi.examples.jpa.data.provider.impl.SessionJpaImpl;
 @Component(
 		name = "osgi.examples.jpa.data.factory",
 		configurationPolicy=ConfigurationPolicy.OPTIONAL,
+//		immediate=true,
 	property = {			
 			"service.pid=osgi.examples.jpa.data.factory", 
 			Debug.COMMAND_SCOPE + "=jpa", 
 			Debug.COMMAND_FUNCTION + "=getName" 
 		}
 )
-public class DataImpl implements  Data, ManagedServiceFactory  {
+public class DataImpl implements  Data  {
+
+	static final Logger		logger	= LoggerFactory.getLogger(Data.class);
 
     @Reference(cardinality = ReferenceCardinality.OPTIONAL, target = "(osgi.unit.name=data.jpa.factory)")
     protected EntityManagerFactoryBuilder emfb;
@@ -45,7 +46,8 @@ public class DataImpl implements  Data, ManagedServiceFactory  {
     private EntityManagerFactory emf; // injected from OSGi DS
 
 	public DataImpl() {
-		System.out.println("Create DataImpl");			
+//		System.out.println("Create DataImpl");			
+		logger.info("Create");
 	}
 	
 	@Override
@@ -63,7 +65,8 @@ public class DataImpl implements  Data, ManagedServiceFactory  {
 		ComponentContext cc, 
 		BundleContext bc, 
 		Map<String,Object> config) {
-		System.out.println("Activate DataImpl: " + config);			
+		logger.info("Activate");
+//		System.out.println("Activate DataImpl: " + config);			
         if (emf != null && emf.isOpen()) {
         	emf.close();
         }		
@@ -78,12 +81,14 @@ public class DataImpl implements  Data, ManagedServiceFactory  {
         if (emf != null && emf.isOpen()) {
         	emf.close();
         }		
-		System.out.println("Deactivate DataImpl: " + config);			
+		logger.info("Deactivate");
+//		System.out.println("Deactivate DataImpl: " + config);			
 	}
 	
 	@Modified
 	void modified(Map<String,Object> config) {
-		System.out.println("Modified DataImpl");			
+		logger.info("Modified");
+//		System.out.println("Modified DataImpl");			
         if (emf != null && emf.isOpen()) {
         	emf.close();
         }		
@@ -92,18 +97,9 @@ public class DataImpl implements  Data, ManagedServiceFactory  {
 
 	@Reference
 	void setLogService(LogService log) {
-		System.out.println("SetServiceLoger");			
+		logger.info("LogService: {}", log);
+//		System.out.println("SetServiceLoger");			
 //		this.log = log;
-	}
-	
-	@Override
-	public void updated(String pid, Dictionary<String, ?> properties) throws ConfigurationException {
-		System.out.println("Updated factory " + pid + " -> " + properties);			
-	}
-	
-	@Override
-	public void deleted(String pid) {
-		System.out.println("Deleted factory " + pid );		
 	}
 
     private void config(Map<String, Object> properties) {
