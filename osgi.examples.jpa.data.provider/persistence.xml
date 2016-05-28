@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    <persistence-unit name="data.jpa.factory">
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <shared-cache-mode>ALL</shared-cache-mode>
+        <properties>
+            <!-- Logging -->
+            <property name="eclipselink.logging.thread" value="false"/>
+            <property name="eclipselink.logging.session" value="true"/>
+            <property name="eclipselink.logging.exceptions" value="true"/>
+            <property name="eclipselink.logging.timestamp" value="false"/>
+            <!-- Configure default connection pool -->
+            <property name="eclipselink.connection-pool.default.initial" value="1"/>
+            <property name="eclipselink.connection-pool.default.min" value="64"/>
+            <property name="eclipselink.connection-pool.default.max" value="64"/>
+        </properties>
+    </persistence-unit>
+</persistence>
